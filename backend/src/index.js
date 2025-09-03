@@ -1,5 +1,9 @@
 import express from "express";
+import globalErrorHandler from "./middleware/globalErrorHandler.js";
 import cors from 'cors';
+
+
+// create express app
 const app = express();
 
 // app configuration
@@ -18,6 +22,9 @@ const baseUrl = "/api/v1"
 app.all(/(.*)/, (req, res) => {
   res.status(404).json({ message: "Invalid Request URL!" });
 });
-// globalError Handler  middleware
 
+// globalError Handler  middleware
+app.use(globalErrorHandler);
+
+// export app 
 export default app;
