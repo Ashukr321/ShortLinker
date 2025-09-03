@@ -15,6 +15,9 @@ const baseUrl = "/api/v1"
 //routes
 
 // 404 Handler (Not Found)
+app.all(/(.*)/, (req, res) => {
+  res.status(404).json({ message: "Invalid Request URL!" });
+});
 // globalError Handler  middleware
 
 export default app;
