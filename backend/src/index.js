@@ -1,7 +1,7 @@
 import express from "express";
 import globalErrorHandler from "./middleware/globalErrorHandler.js";
 import cors from 'cors';
-
+import urlRoutes from './modules/url/url.routes.js'
 
 // create express app
 const app = express();
@@ -11,12 +11,13 @@ const app = express();
 app.use(cors({
   origin: "*"
 }))
-// parse body 
+// parse body data 
 app.use(express.json());
 
 // baseurl 
 const baseUrl = "/api/v1"
 //routes
+app.use(baseUrl,urlRoutes)
 
 // 404 Handler (Not Found)
 app.all(/(.*)/, (req, res) => {
